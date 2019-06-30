@@ -9,7 +9,7 @@ add_library(em::nostdx ALIAS nostdx)
 option(EM_NOSTDX_BUILD_TESTS "Build the nostdx tests" OFF)
 
 target_include_directories(nostdx INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>)
 
 install(TARGETS nostdx EXPORT nostdxTargets
