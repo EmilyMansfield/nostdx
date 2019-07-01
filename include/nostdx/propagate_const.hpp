@@ -1,4 +1,5 @@
 #ifndef EM_NOSTDX_PROPAGATE_CONST_HPP
+#define EM_NOSTDX_PROPAGATE_CONST_HPP
 
 #include <type_traits>
 #include <utility>
