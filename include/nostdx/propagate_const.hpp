@@ -11,18 +11,6 @@ class propagate_const;
 
 namespace internal {
 
-/// Provides the member constant `value` equal to `true` if `T` is a
-/// specialization of the class template `Temp`, and `false` otherwise.
-template<class T, template<class...> class Temp>
-struct is_specialization : std::false_type {};
-
-template<template<class ...> class Temp, class ...Args>
-struct is_specialization<Temp<Args...>, Temp> : std::true_type {};
-
-template<class T, template<class...> class Temp>
-static inline constexpr bool
-    is_specialization_v = is_specialization<T, Temp>::value;
-
 template<class T> static inline constexpr bool
     is_propagate_const_specialization_v =
     is_specialization_v<T, propagate_const>;

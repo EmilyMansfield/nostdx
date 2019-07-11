@@ -1,5 +1,6 @@
 #include "nostdx/functional.hpp"
 #include "nostdx/propagate_const.hpp"
+#include "nostdx/span.hpp"
 #include "nostdx/type_traits.hpp"
 
 // No tests yet :(
