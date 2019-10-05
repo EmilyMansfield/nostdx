@@ -1,7 +1,7 @@
 #ifndef EM_NOSTDX_PROPAGATE_CONST_HPP
 #define EM_NOSTDX_PROPAGATE_CONST_HPP
 
-#include <type_traits>
+#include "nostdx/type_traits.hpp"
 #include <utility>
 
 namespace nostdx {

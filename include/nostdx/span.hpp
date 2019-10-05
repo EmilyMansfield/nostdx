@@ -1,11 +1,11 @@
 #ifndef EM_NOSTDX_SPAN_HPP
 #define EM_NOSTDX_SPAN_HPP
 
+#include "nostdx/type_traits.hpp"
 #include <array>
 #include <iterator>
 #include <limits>
 #include <tuple>
-#include "nostdx/type_traits.hpp"
 
 namespace nostdx {
 
