@@ -12,5 +12,7 @@ but aren't implemented by all compilers, or haven't been accepted etc.
   - `propagate_const` ([N4562](http://wg21.link/n4562), [cppreference](https://en.cppreference.com/w/cpp/experimental/propagate_const))
 - `type_traits.hpp`
   - `type_identity` (C++20, [cppreference](https://en.cppreference.com/w/cpp/types/type_identity))
+- `span.hpp`
+  - `span` (C++20, [cppreference](https://en.cppreference.com/w/cpp/container/span))
 
 Any modern compiler supporting C++17 should be sufficient.
