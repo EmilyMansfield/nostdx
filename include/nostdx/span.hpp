@@ -65,18 +65,21 @@ class span {
   template<
       std::size_t N,
       std::enable_if_t<(extent == dynamic_extent || extent == N), bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(element_type (&arr)[N]) noexcept
       : mData{std::data(arr)}, mSize{N} {}
 
   template<
       std::size_t N,
       std::enable_if_t<(extent == dynamic_extent || extent == N), bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(std::array<value_type, N> &arr) noexcept
       : mData{std::data(arr)}, mSize{N} {}
 
   template<
       std::size_t N,
       std::enable_if_t<(extent == dynamic_extent || extent == N), bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(const std::array<value_type, N> &arr) noexcept
       : mData{std::data(arr)}, mSize{N} {}
 
@@ -91,6 +94,7 @@ class span {
                                     element_type (*)[]>,
           bool> = true,
       class = std::void_t<decltype(std::size(std::declval<Container &>()))>>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(Container &container)
       : mData{std::data(container)}, mSize{std::size(container)} {}
 
@@ -106,6 +110,7 @@ class span {
                        bool> = true,
       class =
           std::void_t<decltype(std::size(std::declval<const Container &>()))>>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(const Container &container)
       : mData{std::data(container)}, mSize{std::size(container)} {}
 
@@ -114,6 +119,7 @@ class span {
       std::enable_if_t<(extent == dynamic_extent || extent == N) &&
                            std::is_convertible_v<U (*)[], element_type (*)[]>,
                        bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   constexpr span(const span<U, N> &s) noexcept
       : mData{s.mData}, mSize{s.mSize} {}
 
@@ -148,7 +154,9 @@ class span {
   constexpr reference back() const { return *(end() - 1); }
   constexpr reference operator[](index_type idx) const { return mData[idx]; }
   constexpr pointer data() const noexcept { return mData; }
+  // NOLINTNEXTLINE(modernize-use-nodiscard)
   constexpr index_type size() const noexcept { return mSize; }
+  // NOLINTNEXTLINE(modernize-use-nodiscard)
   constexpr index_type size_bytes() const noexcept { return mSize * sizeof(T); }
   [[nodiscard]] constexpr bool empty() const noexcept { return mSize == 0; }
 

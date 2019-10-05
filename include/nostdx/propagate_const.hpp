@@ -35,6 +35,7 @@ class propagate_const {
   template<class U, std::enable_if_t<
       std::is_constructible_v<T, U &&> && std::is_convertible_v<U &&, T>,
       bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   /*explicit(false)*/ constexpr propagate_const(propagate_const<U> &&pu)
   noexcept(std::is_nothrow_constructible_v<T, U &&>) : mT{std::move(pu.mT)} {}
 
@@ -49,6 +50,7 @@ class propagate_const {
           !internal::is_propagate_const_specialization_v<std::decay_t<U>> &&
           std::is_convertible_v<U &&, T>,
       bool> = true>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions, bugprone-forwarding-reference-overload)
   /*explicit(false)*/ constexpr propagate_const(U &&u)
   noexcept(std::is_nothrow_constructible_v<T, U &&>) : mT{std::forward<U>(u)} {}
 
@@ -57,6 +59,7 @@ class propagate_const {
           !internal::is_propagate_const_specialization_v<std::decay_t<U>> &&
           !std::is_convertible_v<U &&, T>,
       bool> = true>
+  // NOLINTNEXTLINE(bugprone-forwarding-reference-overload)
   constexpr explicit propagate_const(U &&u)
   noexcept(std::is_nothrow_constructible_v<T, U &&>) : mT{std::forward<U>(u)} {}
 
@@ -119,10 +122,12 @@ class propagate_const {
 
   template<class T_ = T,
       class = std::enable_if_t<std::is_convertible_v<T_, element_type *>>>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   /*explicit(false)*/ constexpr operator element_type *() { return get(); }
 
   template<class T_ = T,
       class = std::enable_if_t<std::is_convertible_v<T_, const element_type *>>>
+  // NOLINTNEXTLINE(google-explicit-constructor, hicpp-explicit-conversions)
   /*explicit(false)*/ constexpr operator const element_type *() const {
     return get();
   }
